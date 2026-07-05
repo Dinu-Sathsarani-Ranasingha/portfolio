@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Dinu Sathsarani Ranasingha | BA & Data Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+:root{
+  --bg-primary:#050b18;
+  --bg-secondary:#080f20;
+  --bg-card:#0d1528;
+  --bg-card-hover:#111c35;
+  --accent:#7c3aed;
+  --accent-bright:#a855f7;
+  --accent-glow:#c084fc;
+  --accent-dim:#4c1d95;
+  --teal:#8b5cf6;
+  --white:#ffffff;
+  --text-primary:#f1f5f9;
+  --text-secondary:#94a3b8;
+  --text-muted:#64748b;
+  --border:rgba(124,58,237,0.2);
+  --border-bright:rgba(168,85,247,0.5);
+  --glow-sm:0 0 10px rgba(168,85,247,0.4);
+  --glow-md:0 0 25px rgba(168,85,247,0.5);
+  --glow-lg:0 0 50px rgba(168,85,247,0.4);
+  --shadow-card:0 4px 30px rgba(0,0,0,0.4);
+  --gradient:linear-gradient(135deg,var(--accent),var(--accent-bright));
+  --gradient-text:linear-gradient(135deg,var(--white) 30%,var(--accent-glow));
+  --radius:16px;
+  --transition:all .3s cubic-bezier(.4,0,.2,1);
+  --font:'Poppins',sans-serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg-primary);color:var(--text-primary);line-height:1.6;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+img{max-width:100%;display:block}
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:var(--bg-primary)}
+::-webkit-scrollbar-thumb{background:var(--accent-dim);border-radius:4px}
+
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+
+#particle-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none}
+
+.section{padding:100px 0;position:relative;z-index:1}
+.section-header{text-align:center;margin-bottom:64px}
+.section-label{display:inline-block;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:4px;color:var(--accent-bright);margin-bottom:14px}
+.section-title{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;background:var(--gradient-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;position:relative;display:inline-block}
+.section-title::after{content:'';position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);width:60px;height:3px;background:var(--gradient);border-radius:2px;box-shadow:var(--glow-sm)}
+.section-subtitle{margin-top:22px;font-size:1rem;color:var(--text-secondary);max-width:560px;margin-left:auto;margin-right:auto}
+.bg-alt{background:var(--bg-secondary)}
+
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;border-radius:50px;font-size:.9rem;font-weight:600;font-family:var(--font);cursor:pointer;transition:var(--transition);border:2px solid transparent;text-decoration:none;position:relative;overflow:hidden}
+.btn::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.06);opacity:0;transition:var(--transition)}
+.btn:hover::before{opacity:1}
+.btn-primary{background:var(--gradient);color:var(--white);box-shadow:var(--glow-sm)}
+.btn-primary:hover{box-shadow:var(--glow-md);transform:translateY(-2px)}
+.btn-outline{border-color:var(--border-bright);color:var(--text-primary)}
+.btn-outline:hover{border-color:var(--accent-bright);box-shadow:var(--glow-sm);transform:translateY(-2px)}
+.btn-ghost{color:var(--text-secondary)}
+.btn-ghost:hover{color:var(--accent-glow)}
+.btn-full{width:100%;justify-content:center}
+
+/* NAV */
+#navbar{position:fixed;top:0;left:0;right:0;z-index:300;padding:18px 0;transition:var(--transition);backdrop-filter:blur(0px)}
+#navbar.scrolled{background:rgba(5,11,24,.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:12px 0}
+.nav-container{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-weight:800;font-size:1.3rem;letter-spacing:-.5px}
+.nav-logo span{color:var(--accent-bright)}
+.nav-links{display:flex;gap:6px;align-items:center}
+.nav-link{font-size:.85rem;font-weight:500;color:var(--text-secondary);padding:8px 14px;border-radius:20px;transition:var(--transition)}
+.nav-link:hover{color:var(--white);background:rgba(124,58,237,.12)}
+.nav-cv{margin-left:8px}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:6px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text-primary);border-radius:2px;transition:var(--transition)}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;padding-top:80px}
+.hero-bg-shapes{position:absolute;inset:0;overflow:hidden;z-index:0}
+.shape{position:absolute;border-radius:50%;filter:blur(90px);opacity:.35}
+.shape-1{width:420px;height:420px;background:var(--accent);top:-120px;right:-100px}
+.shape-2{width:340px;height:340px;background:var(--teal);bottom:-100px;left:-80px}
+.shape-3{width:260px;height:260px;background:var(--accent-glow);top:40%;left:45%;opacity:.18}
+.hero-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;position:relative;z-index:2}
+.hero-greeting{color:var(--accent-bright);font-weight:600;margin-bottom:14px;letter-spacing:1px}
+.hero-name{font-size:clamp(2.4rem,5.5vw,3.6rem);font-weight:800;line-height:1.05;letter-spacing:-1px;background:var(--gradient-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:10px}
+.hero-role{font-size:1.2rem;font-weight:500;color:var(--text-secondary);margin-bottom:18px}
+.hero-tags{font-size:1rem;color:var(--text-secondary);margin-bottom:32px;min-height:26px}
+.hero-tags-prefix{color:var(--text-primary);font-weight:600}
+.typing-text{color:var(--accent-glow);font-weight:600}
+.typing-text::after{content:'|';animation:blink 1s step-start infinite}
+@keyframes blink{50%{opacity:0}}
+.hero-buttons{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px}
+.hero-socials{display:flex;gap:14px}
+.hero-socials a{width:42px;height:42px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--text-secondary);transition:var(--transition)}
+.hero-socials a:hover{color:var(--white);border-color:var(--accent-bright);box-shadow:var(--glow-sm);transform:translateY(-3px)}
+.hero-photo-wrap{position:relative;display:flex;justify-content:center;align-items:center}
+.hero-photo-glow{position:absolute;width:280px;height:280px;border-radius:50%;background:var(--gradient);filter:blur(60px);opacity:.5}
+.hero-photo-ring{position:relative;width:280px;height:280px;border-radius:50%;padding:6px;background:var(--gradient);animation:spin 12s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hero-photo{width:100%;height:100%;border-radius:50%;object-fit:cover;border:5px solid var(--bg-primary);animation:spinback 12s linear infinite}
+@keyframes spinback{to{transform:rotate(-360deg)}}
+.hero-badge{position:absolute;bottom:6px;left:50%;transform:translateX(-50%);background:var(--bg-card);border:1px solid var(--border-bright);padding:8px 18px;border-radius:50px;font-size:.8rem;font-weight:600;white-space:nowrap;box-shadow:var(--shadow-card);display:flex;align-items:center;gap:6px}
+.hero-badge i{color:var(--accent-glow)}
+.hero-scroll{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2}
+.hero-scroll a{color:var(--text-muted);font-size:1.2rem;animation:bounce 2s ease infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:60px;align-items:start}
+.about-avatar{position:relative;width:220px;margin:0 auto 30px}
+.avatar-ring{position:absolute;inset:-8px;border-radius:28px;background:var(--gradient);opacity:.5;filter:blur(20px)}
+.avatar-inner{position:relative;border-radius:24px;overflow:hidden;border:3px solid var(--border-bright)}
+.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.stat-item{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:16px 8px;text-align:center}
+.stat-number{display:block;font-size:1.4rem;font-weight:800;background:var(--gradient-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat-label{font-size:.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px}
+.about-tagline{font-size:1.3rem;font-weight:700;margin-bottom:16px}
+.about-text p{color:var(--text-secondary);margin-bottom:14px;font-size:.95rem}
+.about-text strong{color:var(--text-primary)}
+.about-info-table{margin:26px 0;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.info-row{display:flex;justify-content:space-between;padding:12px 18px;font-size:.85rem;border-bottom:1px solid var(--border)}
+.info-row:last-child{border-bottom:none}
+.info-row:nth-child(odd){background:var(--bg-card)}
+.info-key{color:var(--text-muted);display:flex;align-items:center;gap:8px}
+.info-key i{color:var(--accent-bright);width:16px}
+.info-val{color:var(--text-primary);font-weight:500;text-align:right}
+.status-open{color:#4ade80;display:inline-flex;align-items:center;gap:6px}
+.about-interests{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px}
+.interest-chip{background:rgba(124,58,237,.12);border:1px solid var(--border);color:var(--accent-glow);padding:7px 16px;border-radius:50px;font-size:.78rem;font-weight:600;display:flex;align-items:center;gap:6px}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+.skill-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:26px;transition:var(--transition)}
+.skill-card:hover{border-color:var(--border-bright);box-shadow:var(--shadow-card);transform:translateY(-4px)}
+.skill-card h3{font-size:1rem;margin-bottom:16px;color:var(--accent-glow)}
+.skill-tags{display:flex;flex-wrap:wrap;gap:8px}
+.skill-tag{background:rgba(124,58,237,.1);border:1px solid var(--border);color:var(--text-secondary);font-size:.75rem;font-weight:500;padding:5px 12px;border-radius:8px}
+
+/* PROJECTS */
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:26px}
+.project-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:var(--transition);display:flex;flex-direction:column}
+.project-card:hover{border-color:var(--border-bright);box-shadow:var(--shadow-card);transform:translateY(-6px)}
+.project-top{height:110px;display:flex;align-items:center;justify-content:center;font-size:2.6rem;background:var(--gradient);position:relative}
+.project-body{padding:24px;flex:1;display:flex;flex-direction:column}
+.project-date{font-size:.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;font-weight:600}
+.project-card h3{font-size:1rem;margin-bottom:10px;letter-spacing:-.2px}
+.project-card p{font-size:.85rem;color:var(--text-secondary);margin-bottom:16px;flex:1}
+.project-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
+.project-chip{font-size:.7rem;color:var(--accent-glow);background:rgba(124,58,237,.1);border:1px solid var(--border);padding:4px 10px;border-radius:6px;font-weight:600}
+.project-link{display:inline-flex;align-items:center;gap:8px;font-size:.82rem;font-weight:600;color:var(--text-primary);width:fit-content;padding:9px 16px;border-radius:50px;border:1px solid var(--border);transition:var(--transition)}
+.project-link:hover{border-color:var(--accent-bright);color:var(--accent-glow);box-shadow:var(--glow-sm)}
+.project-actions{display:flex;flex-wrap:wrap;gap:10px}
+.project-video-btn{display:inline-flex;align-items:center;gap:8px;font-size:.82rem;font-weight:600;width:fit-content;padding:9px 16px;border-radius:50px;border:1px solid var(--border);cursor:pointer;font-family:var(--font);background:transparent;color:var(--text-primary);transition:var(--transition)}
+.project-video-btn:hover{border-color:var(--accent-bright);color:var(--accent-glow);box-shadow:var(--glow-sm)}
+.project-video-btn.video-btn-primary{background:var(--gradient);border-color:transparent;color:var(--white)}
+.project-video-btn.video-btn-primary:hover{box-shadow:var(--glow-md);color:var(--white);transform:translateY(-2px)}
+
+/* VIDEO MODAL */
+.video-modal-overlay{position:fixed;inset:0;background:rgba(5,11,24,.88);backdrop-filter:blur(6px);z-index:1000;display:none;align-items:center;justify-content:center;padding:24px}
+.video-modal-overlay.open{display:flex}
+.video-modal{background:var(--bg-card);border:1px solid var(--border-bright);border-radius:var(--radius);max-width:820px;width:100%;overflow:hidden;box-shadow:var(--glow-lg)}
+.video-modal-header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 22px;border-bottom:1px solid var(--border)}
+.video-modal-header h3{font-size:1rem;font-weight:700}
+.video-modal-close{background:none;border:none;color:var(--text-secondary);font-size:1.1rem;cursor:pointer;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:var(--transition);flex-shrink:0}
+.video-modal-close:hover{color:var(--white);background:rgba(124,58,237,.18)}
+.video-modal-body{position:relative;padding-top:56.25%;background:#000}
+.video-modal-body iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+
+/* FEATURED PROJECT HIGHLIGHT */
+.projects-featured .projects-grid{grid-template-columns:repeat(auto-fit,minmax(380px,1fr));max-width:760px;margin:0 auto}
+.project-card-featured{position:relative;border:1px solid var(--border-bright);box-shadow:var(--glow-md)}
+.project-card-featured .project-top{height:140px;font-size:3.2rem}
+.project-card-featured:hover{box-shadow:var(--glow-lg);transform:translateY(-8px)}
+.project-featured-badge{position:absolute;top:16px;right:16px;z-index:2;display:flex;align-items:center;gap:6px;background:var(--bg-primary);border:1px solid var(--border-bright);color:var(--accent-glow);font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:6px 14px;border-radius:50px;box-shadow:var(--shadow-card)}
+
+/* CERTIFICATIONS */
+.certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.cert-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;display:flex;align-items:center;gap:16px;transition:var(--transition)}
+.cert-card:hover{border-color:var(--border-bright);transform:translateY(-3px);box-shadow:var(--shadow-card)}
+.cert-icon{width:46px;height:46px;border-radius:12px;background:var(--gradient);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.1rem}
+.cert-info{flex:1}
+.cert-name{font-size:.88rem;font-weight:600;margin-bottom:4px}
+.cert-issuer{font-size:.75rem;color:var(--text-muted)}
+.cert-date{font-size:.7rem;color:var(--accent-glow);font-weight:600;margin-top:4px}
+.cert-arrow{color:var(--text-muted)}
+.cert-card:hover .cert-arrow{color:var(--accent-glow)}
+
+/* EDUCATION */
+.edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+.edu-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:26px;position:relative;transition:var(--transition)}
+.edu-card:hover{border-color:var(--border-bright);box-shadow:var(--shadow-card)}
+.edu-year{font-size:.72rem;color:var(--accent-glow);font-weight:700;letter-spacing:1px;margin-bottom:10px}
+.edu-degree{font-size:.98rem;font-weight:700;margin-bottom:8px}
+.edu-school{font-size:.85rem;color:var(--text-secondary)}
+
+/* EXPERIENCE TIMELINE */
+.timeline{position:relative;max-width:800px;margin:0 auto;padding-left:32px;border-left:2px solid var(--border)}
+.timeline-item{position:relative;padding-bottom:40px}
+.timeline-item:last-child{padding-bottom:0}
+.timeline-item::before{content:'';position:absolute;left:-39px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--gradient);box-shadow:var(--glow-sm)}
+.timeline-period{font-size:.72rem;color:var(--accent-glow);font-weight:700;letter-spacing:1px;margin-bottom:6px;text-transform:uppercase}
+.timeline-org{font-size:.8rem;color:var(--text-muted);margin-bottom:10px}
+.timeline-role{font-size:1.02rem;font-weight:700;margin-bottom:4px}
+.timeline-dept{font-size:.82rem;color:var(--accent-bright);margin-bottom:12px;font-weight:600}
+.timeline-item ul{padding-left:18px}
+.timeline-item li{font-size:.85rem;color:var(--text-secondary);margin-bottom:6px;list-style:disc}
+.timeline-item li::marker{color:var(--accent-bright)}
+
+/* CV SECTION */
+.cv-box{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:52px 40px;text-align:center;max-width:640px;margin:0 auto}
+.cv-box h2{font-size:1.5rem;margin-bottom:12px}
+.cv-box p{color:var(--text-secondary);margin-bottom:26px;font-size:.92rem}
+.cv-btn-group{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr;gap:20px;max-width:640px;margin:0 auto}
+.contact-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;display:flex;align-items:center;gap:16px;transition:var(--transition)}
+.contact-card:hover{border-color:var(--border-bright);transform:translateY(-3px);box-shadow:var(--shadow-card)}
+.contact-card-icon{width:46px;height:46px;border-radius:12px;background:var(--gradient);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.contact-card-text{flex:1;display:flex;flex-direction:column}
+.contact-card-label{font-size:.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px}
+.contact-card-value{font-size:.92rem;font-weight:600}
+.contact-card-arrow{color:var(--text-muted)}
+.contact-card:hover .contact-card-arrow{color:var(--accent-glow)}
+
+/* FOOTER */
+.footer{padding:40px 0;border-top:1px solid var(--border);position:relative;z-index:1}
+.footer-inner{display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center}
+.footer-logo{font-weight:800;font-size:1.1rem}
+.footer-logo span{color:var(--accent-bright)}
+.footer-copy{font-size:.8rem;color:var(--text-muted)}
+.footer-socials{display:flex;gap:16px}
+.footer-socials a{color:var(--text-secondary);transition:var(--transition)}
+.footer-socials a:hover{color:var(--accent-glow)}
+
+.back-to-top{position:fixed;bottom:26px;right:26px;width:44px;height:44px;border-radius:50%;background:var(--gradient);border:none;color:var(--white);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:var(--glow-sm);opacity:0;pointer-events:none;transition:var(--transition);z-index:200}
+.back-to-top.show{opacity:1;pointer-events:auto}
+.back-to-top:hover{box-shadow:var(--glow-md);transform:translateY(-3px)}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;text-align:center}
+  .hero-socials{justify-content:center}
+  .hero-buttons{justify-content:center}
+  .hero-photo-wrap{order:-1;margin-bottom:20px}
+  .about-grid{grid-template-columns:1fr}
+  .nav-links{position:fixed;top:64px;left:0;right:0;background:rgba(5,11,24,.98);backdrop-filter:blur(16px);flex-direction:column;padding:16px;gap:4px;border-bottom:1px solid var(--border);display:none}
+  .nav-links.open{display:flex}
+  .nav-link{width:100%;padding:12px 16px;border-radius:8px}
+  .nav-cv{margin:8px 0 0;width:100%;justify-content:center}
+  .hamburger{display:flex}
+}
+</style>
+</head>
+<body>
+<canvas id="particle-canvas"></canvas>
+
+<header id="navbar">
+  <nav class="nav-container">
+    <a href="#hero" class="nav-logo">Dinu<span>.</span></a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#skills" class="nav-link">Skills</a></li>
+      <li><a href="#certifications" class="nav-link">Certs</a></li>
+      <li><a href="#education" class="nav-link">Education</a></li>
+      <li><a href="#experience" class="nav-link">Experience</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+      <li><a href="#cv" class="btn btn-primary nav-cv" style="padding:8px 18px;font-size:.78rem">CV</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section id="hero" class="hero">
+  <div class="hero-bg-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-content reveal">
+      <p class="hero-greeting">👋 Hello, I'm</p>
+      <h1 class="hero-name">Dinu Sathsarani Ranasingha</h1>
+      <h2 class="hero-role">Business Analyst &amp; Data Analyst Undergraduate at SLIIT</h2>
+      <div class="hero-tags"><span class="hero-tags-prefix">I turn complex requirements into </span><span class="typing-text"></span></div>
+      <div class="hero-buttons">
+        <a href="#projects" class="btn btn-primary"><i class="fas fa-diagram-project"></i> View Projects</a>
+        <a href="assets/Sathsarani_Ranasingha.pdf" class="btn btn-outline" download><i class="fas fa-download"></i> Download CV</a>
+        <a href="#contact" class="btn btn-ghost"><i class="fas fa-envelope"></i> Contact Me</a>
+      </div>
+      <div class="hero-socials">
+        <a href="https://github.com/Dinu-Sathsarani-Ranasingha" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="http://www.linkedin.com/in/sathsarani-ranasingha" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="mailto:sathsaraniranasingha4@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+    <div class="hero-photo-wrap reveal">
+      <div class="hero-photo-glow"></div>
+      <div class="hero-photo-ring">
+        <img src="images/profile.jpg" alt="Dinu Sathsarani Ranasingha" class="hero-photo"/>
+      </div>
+      <div class="hero-badge"><i class="fas fa-circle-check"></i> Open to BA &amp; PM Internships</div>
+    </div>
+  </div>
+  <div class="hero-scroll"><a href="#about"><i class="fas fa-chevron-down"></i></a></div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="section bg-alt projects-featured">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label">Selected work</p>
+      <h2 class="section-title">Featured Projects</h2>
+      <p class="section-subtitle">A closer look at the work I'm most proud of — from data pipeline to published dashboard.</p>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card project-card-featured reveal">
+        <span class="project-featured-badge"><i class="fas fa-star"></i> Featured</span>
+        <div class="project-top">🛒</div>
+        <div class="project-body">
+          <p class="project-date">June 2026 – Present</p>
+          <h3>E-Commerce Sales Performance Dashboard</h3>
+          <p>End-to-end sales data analysis using Python and SQL, with an interactive Power BI dashboard surfacing business KPIs and insights. Fully documented and published on GitHub.</p>
+          <div class="project-chips">
+            <span class="project-chip">Python</span>
+            <span class="project-chip">Pandas</span>
+            <span class="project-chip">SQL</span>
+            <span class="project-chip">Power BI</span>
+            <span class="project-chip">GitHub</span>
+          </div>
+          <a href="https://github.com/Dinu-Sathsarani-Ranasingha/E-COMMERCE_SALES_PERFORMANCE_DASHBOARD" target="_blank" rel="noopener" class="project-link"><i class="fab fa-github"></i> View on GitHub</a>
+          <div class="project-actions" style="margin-top:12px">
+            <!-- Replace YOUR_SHORT_VIDEO_ID and YOUR_DETAILED_VIDEO_ID below with your real YouTube video IDs (the part after "v=" in the video URL) -->
+            <button type="button" class="project-video-btn video-btn-primary" data-video-id="YOUR_SHORT_VIDEO_ID" data-video-title="E-Commerce Sales Dashboard — Short Preview"><i class="fas fa-circle-play"></i> Watch Short Video</button>
+            <button type="button" class="project-video-btn" data-video-id="YOUR_DETAILED_VIDEO_ID" data-video-title="E-Commerce Sales Dashboard — Detailed Walkthrough"><i class="fab fa-youtube"></i> Detailed Walkthrough</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label">Get to know me</p>
+      <h2 class="section-title">About Me</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <div class="about-avatar">
+          <div class="avatar-ring"></div>
+          <div class="avatar-inner"><img src="images/profile.jpg" alt="Dinu Sathsarani Ranasingha"/></div>
+        </div>
+        <div class="about-stats">
+          <div class="stat-item"><span class="stat-number">3rd</span><span class="stat-label">Year</span></div>
+          <div class="stat-item"><span class="stat-number">5+</span><span class="stat-label">Certs</span></div>
+          <div class="stat-item"><span class="stat-number">1</span><span class="stat-label">Projects</span></div>
+        </div>
+      </div>
+      <div class="about-text reveal">
+        <h3 class="about-tagline">BSc (Hons) IT — Information Systems Engineering, SLIIT</h3>
+        <p>Detail-oriented undergraduate with hands-on experience in <strong>business analysis, Agile project coordination, stakeholder management, and data analytics</strong>. I enjoy turning ambiguous requirements into clear documentation and actionable dashboards.</p>
+        <p>My background spans <strong>requirements engineering, BPMN process modeling, Power BI, Python, and SQL</strong>, alongside real project delivery through freelance data analyst work on Upwork.</p>
+        <p>I'm currently seeking a <strong>BA or PM internship</strong> where I can contribute from day one and keep growing as a business analyst.</p>
+
+        <div class="about-info-table">
+          <div class="info-row"><span class="info-key"><i class="fas fa-user"></i> Name</span><span class="info-val">Dinu Sathsarani Ranasingha</span></div>
+          <div class="info-row"><span class="info-key"><i class="fas fa-graduation-cap"></i> Degree</span><span class="info-val">BSc (Hons) Information Technology</span></div>
+          <div class="info-row"><span class="info-key"><i class="fas fa-university"></i> University</span><span class="info-val">SLIIT</span></div>
+          <div class="info-row"><span class="info-key"><i class="fas fa-phone"></i> Phone</span><span class="info-val">+94 75 360 2626</span></div>
+          <div class="info-row"><span class="info-key"><i class="fas fa-location-dot"></i> Location</span><span class="info-val">Gampaha, Sri Lanka</span></div>
+          <div class="info-row"><span class="info-key"><i class="fas fa-envelope"></i> Email</span><span class="info-val"><a href="mailto:sathsaraniranasingha4@gmail.com">sathsaraniranasingha4@gmail.com</a></span></div>
+          <div class="info-row"><span class="info-key"><i class="fas fa-briefcase"></i> Status</span><span class="info-val"><span class="status-open"><i class="fas fa-circle-check"></i> Open to Internships</span></span></div>
+        </div>
+
+        <div class="about-interests">
+          <span class="interest-chip"><i class="fas fa-diagram-project"></i> Business Analysis</span>
+          <span class="interest-chip"><i class="fas fa-chart-line"></i> Data Analytics</span>
+          <span class="interest-chip"><i class="fas fa-people-group"></i> Project Management</span>
+        </div>
+
+        <a href="assets/Sathsarani_Ranasingha.pdf" class="btn btn-primary" download><i class="fas fa-download"></i> Download CV</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="section bg-alt">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label">What I bring</p>
+      <h2 class="section-title">Skills &amp; Expertise</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <h3>Business Analysis &amp; PM</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Requirements Gathering</span>
+          <span class="skill-tag">Requirements Analysis</span>
+          <span class="skill-tag">User Story Development</span>
+          <span class="skill-tag">Stakeholder Management</span>
+          <span class="skill-tag">Process Modeling</span>
+          <span class="skill-tag">Agile / Scrum</span>
+          <span class="skill-tag">Sprint Planning</span>
+          <span class="skill-tag">Project Documentation</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <h3>Data &amp; Analytics</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Data Analysis</span>
+          <span class="skill-tag">KPI Tracking</span>
+          <span class="skill-tag">Dashboard Development</span>
+          <span class="skill-tag">Data Visualisation</span>
+          <span class="skill-tag">Risk Analysis</span>
+          <span class="skill-tag">Trend Analysis</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <h3>Tools &amp; Technologies</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Power BI</span>
+          <span class="skill-tag">Excel</span>
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Jira</span>
+          <span class="skill-tag">Azure DevOps</span>
+          <span class="skill-tag">Figma</span>
+          <span class="skill-tag">Draw.io</span>
+          <span class="skill-tag">Trello</span>
+          <span class="skill-tag">GitHub</span>
+          <span class="skill-tag">Notion</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <h3>Soft Skills</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Communication</span>
+          <span class="skill-tag">Leadership</span>
+          <span class="skill-tag">Critical Thinking</span>
+          <span class="skill-tag">Time Management</span>
+          <span class="skill-tag">Adaptability</span>
+          <span class="skill-tag">Problem Solving</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications" class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label">Professional development</p>
+      <h2 class="section-title">Certifications</h2>
+    </div>
+    <div class="certs-grid">
+      <a href="https://www.linkedin.com/learning/certificates/4e752ace7fd725dfdad2b5197eaab8b1ccaf3c3d88460ae7684ffa4284973fd4" target="_blank" class="cert-card reveal">
+        <div class="cert-icon"><i class="fas fa-award"></i></div>
+        <div class="cert-info"><p class="cert-name">Agile Project Management with Jira Cloud</p><p class="cert-issuer">Project Management Institute (PMI)</p><p class="cert-date">May 2026</p></div>
+        <i class="fas fa-arrow-right cert-arrow"></i>
+      </a>
+      <a href="https://www.linkedin.com/learning/certificates/00124115ed0c5ffbd0c394220173f85c014c4681474f19c4d4a38bb514ebd683" target="_blank" class="cert-card reveal">
+        <div class="cert-icon"><i class="fas fa-award"></i></div>
+        <div class="cert-info"><p class="cert-name">Scrum: The Basics</p><p class="cert-issuer">Project Management Institute (PMI)</p><p class="cert-date">May 2026</p></div>
+        <i class="fas fa-arrow-right cert-arrow"></i>
+      </a>
+      <a href="https://www.linkedin.com/learning/certificates/c42605da19eb2c08897948fdc00eee7b29e0cc3c7026e836a2fa8326b2d28ca0" target="_blank" class="cert-card reveal">
+        <div class="cert-icon"><i class="fas fa-award"></i></div>
+        <div class="cert-info"><p class="cert-name">Introduction to Business Analysis</p><p class="cert-issuer">IIBA</p><p class="cert-date">May 2026</p></div>
+        <i class="fas fa-arrow-right cert-arrow"></i>
+      </a>
+      <a href="https://www.linkedin.com/learning/certificates/20c0e1051e0b9be2243278b4e9b9737fc5e2f7806404af36bb1a351255a642af" target="_blank" class="cert-card reveal">
+        <div class="cert-icon"><i class="fas fa-award"></i></div>
+        <div class="cert-info"><p class="cert-name">Azure Essentials Professional</p><p class="cert-issuer">Microsoft</p><p class="cert-date">May 2026</p></div>
+        <i class="fas fa-arrow-right cert-arrow"></i>
+      </a>
+      <a href="https://www.linkedin.com/learning/certificates/d6a96b2fd360f7258b1a6d2b59893ee6f97db1b278f4fef78f109999436a920e" target="_blank" class="cert-card reveal">
+        <div class="cert-icon"><i class="fas fa-award"></i></div>
+        <div class="cert-info"><p class="cert-name">Customer Relationship Management (Basics)</p><p class="cert-issuer">Project Management Institute (PMI)</p><p class="cert-date">Jun 2026</p></div>
+        <i class="fas fa-arrow-right cert-arrow"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" class="section bg-alt">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label">Academic background</p>
+      <h2 class="section-title">Education</h2>
+    </div>
+    <div class="edu-grid">
+      <div class="edu-card reveal">
+        <p class="edu-year">2024 – Present</p>
+        <h3 class="edu-degree">BSc (Hons) in Information Technology, Specializing in Information Systems Engineering</h3>
+        <p class="edu-school">Sri Lanka Institute of Information Technology (SLIIT)</p>
+      </div>
+      <div class="edu-card reveal">
+        <p class="edu-year">Completed</p>
+        <h3 class="edu-degree">G.C.E. Advanced Level — Commerce Stream</h3>
+        <p class="edu-school">Vishaka Balika Vidyalaya</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label">Work</p>
+      <h2 class="section-title">Experience</h2>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <p class="timeline-period">Mar 2026 – Present</p>
+        <p class="timeline-org">AIESEC in SLIIT</p>
+        <p class="timeline-role">Team Member</p>
+        <p class="timeline-dept">Global Talent &amp; Customer Experience</p>
+        <ul>
+          <li>Coordinated and tracked 50+ candidate applications, ensuring efficient workflow and timely delivery.</li>
+          <li>Managed datasets using Excel and Google Sheets to support data-driven decision-making.</li>
+          <li>Gathered and documented business requirements including user stories and process flows.</li>
+          <li>Improved operational efficiency by 20% by streamlining data tracking processes.</li>
+        </ul>
+      </div>
+      <div class="timeline-item reveal">
+        <p class="timeline-period">Jan 2026 – Present</p>
+        <p class="timeline-org">AIESEC in SLIIT</p>
+        <p class="timeline-role">Team Member</p>
+        <p class="timeline-dept">Marketing &amp; Content Coordination</p>
+        <ul>
+          <li>Planned and executed marketing campaigns aligned with project timelines and deliverables.</li>
+          <li>Analysed audience engagement data to identify trends and generate actionable insights.</li>
+          <li>Assisted in project planning, task prioritisation, and Agile workflow coordination.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CV -->
+<section id="cv" class="section bg-alt">
+  <div class="container">
+    <div class="cv-box reveal">
+      <p class="section-label" style="margin-bottom:10px">My Resume</p>
+      <h2>View or Download My CV</h2>
+      <p>Get a complete overview of my education, experience, projects, and certifications in one document.</p>
+      <div class="cv-btn-group">
+        <a href="assets/Sathsarani_Ranasingha.pdf" target="_blank" class="btn btn-primary"><i class="fas fa-eye"></i> View CV Online</a>
+        <a href="assets/Sathsarani_Ranasingha.pdf" download="Dinu_Sathsarani_CV.pdf" class="btn btn-outline"><i class="fas fa-download"></i> Download CV (PDF)</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label">Get in touch</p>
+      <h2 class="section-title">Let's Connect</h2>
+      <p class="section-subtitle">Open to BA/PM internship opportunities and collaborations. Feel free to reach out — I'd love to chat!</p>
+    </div>
+    <div class="contact-grid">
+      <a href="mailto:sathsaraniranasingha4@gmail.com" class="contact-card reveal">
+        <div class="contact-card-icon"><i class="fas fa-envelope"></i></div>
+        <div class="contact-card-text"><span class="contact-card-label">Email</span><span class="contact-card-value">sathsaraniranasingha4@gmail.com</span></div>
+        <i class="fas fa-arrow-right contact-card-arrow"></i>
+      </a>
+      <a href="tel:+940753602626" class="contact-card reveal">
+        <div class="contact-card-icon"><i class="fas fa-phone"></i></div>
+        <div class="contact-card-text"><span class="contact-card-label">Phone</span><span class="contact-card-value">+94 75 360 2626</span></div>
+        <i class="fas fa-arrow-right contact-card-arrow"></i>
+      </a>
+      <a href="http://www.linkedin.com/in/sathsarani-ranasingha" target="_blank" class="contact-card reveal">
+        <div class="contact-card-icon"><i class="fab fa-linkedin-in"></i></div>
+        <div class="contact-card-text"><span class="contact-card-label">LinkedIn</span><span class="contact-card-value">sathsarani-ranasingha</span></div>
+        <i class="fas fa-arrow-right contact-card-arrow"></i>
+      </a>
+      <a href="https://github.com/Dinu-Sathsarani-Ranasingha" target="_blank" class="contact-card reveal">
+        <div class="contact-card-icon"><i class="fab fa-github"></i></div>
+        <div class="contact-card-text"><span class="contact-card-label">GitHub</span><span class="contact-card-value">Dinu-Sathsarani-Ranasingha</span></div>
+        <i class="fas fa-arrow-right contact-card-arrow"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <a href="#hero" class="footer-logo">Dinu<span>.</span></a>
+      <p class="footer-copy">© 2026 Dinu Sathsarani Ranasingha · Gampaha, Sri Lanka</p>
+      <div class="footer-socials">
+        <a href="https://github.com/Dinu-Sathsarani-Ranasingha" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="http://www.linkedin.com/in/sathsarani-ranasingha" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="mailto:sathsaraniranasingha4@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" id="back-to-top" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
+
+<!-- VIDEO MODAL -->
+<div class="video-modal-overlay" id="video-modal">
+  <div class="video-modal">
+    <div class="video-modal-header">
+      <h3 id="video-modal-title">Project Video</h3>
+      <button type="button" class="video-modal-close" id="video-modal-close" aria-label="Close video"><i class="fas fa-xmark"></i></button>
+    </div>
+    <div class="video-modal-body">
+      <iframe id="video-modal-iframe" src="" title="Project video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
+<script>
+// Nav scroll state
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 40);
+  document.getElementById('back-to-top').classList.toggle('show', window.scrollY > 500);
+});
+
+// Hamburger
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  navLinks.classList.toggle('open');
+});
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  hamburger.classList.remove('open');
+  navLinks.classList.remove('open');
+}));
+
+// Back to top
+document.getElementById('back-to-top').addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
+
+// Video modal (project short/detailed videos)
+const videoModal = document.getElementById('video-modal');
+const videoModalIframe = document.getElementById('video-modal-iframe');
+const videoModalTitle = document.getElementById('video-modal-title');
+
+function openVideoModal(videoId, title){
+  videoModalTitle.textContent = title || 'Project Video';
+  videoModalIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+  videoModal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeVideoModal(){
+  videoModal.classList.remove('open');
+  videoModalIframe.src = '';
+  document.body.style.overflow = '';
+}
+document.querySelectorAll('[data-video-id]').forEach(btn => {
+  btn.addEventListener('click', () => openVideoModal(btn.dataset.videoId, btn.dataset.videoTitle));
+});
+document.getElementById('video-modal-close').addEventListener('click', closeVideoModal);
+videoModal.addEventListener('click', (e) => { if (e.target === videoModal) closeVideoModal(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeVideoModal(); });
+
+// Reveal on scroll
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
+}, {threshold:.15});
+revealEls.forEach(el => io.observe(el));
+
+// Typing effect
+const typingText = document.querySelector('.typing-text');
+const words = ['actionable insights.', 'impactful dashboards.', 'clear documentation.', 'business impact.'];
+let wi=0, ci=0, deleting=false;
+function typeLoop(){
+  const word = words[wi];
+  typingText.textContent = deleting ? word.substring(0, ci--) : word.substring(0, ci++);
+  if(!deleting && ci === word.length+1){ deleting = true; setTimeout(typeLoop, 1200); return; }
+  if(deleting && ci === 0){ deleting = false; wi = (wi+1)%words.length; }
+  setTimeout(typeLoop, deleting ? 40 : 80);
+}
+typeLoop();
+
+// Particle canvas
+const canvas = document.getElementById('particle-canvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+function resize(){ canvas.width = window.innerWidth; canvas.height = document.body.scrollHeight; }
+window.addEventListener('resize', resize);
+resize();
+function initParticles(){
+  particles = [];
+  const count = Math.min(70, Math.floor(window.innerWidth/22));
+  for(let i=0;i<count;i++){
+    particles.push({
+      x: Math.random()*canvas.width,
+      y: Math.random()*window.innerHeight,
+      r: Math.random()*1.8+0.6,
+      vy: Math.random()*0.25+0.05,
+      vx: (Math.random()-0.5)*0.15,
+      o: Math.random()*0.5+0.15
+    });
+  }
+}
+initParticles();
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particles.forEach(p => {
+    p.y -= p.vy; p.x += p.vx;
+    if(p.y < -10){ p.y = window.scrollY + window.innerHeight + 10; p.x = Math.random()*canvas.width; }
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle = `rgba(168,85,247,${p.o})`;
+    ctx.fill();
+  });
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+</body>
+</html>

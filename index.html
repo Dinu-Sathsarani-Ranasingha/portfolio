@@ -77,7 +77,6 @@ img{max-width:100%;display:block}
 .nav-links{display:flex;gap:6px;align-items:center}
 .nav-link{font-size:.85rem;font-weight:500;color:var(--text-secondary);padding:8px 14px;border-radius:20px;transition:var(--transition)}
 .nav-link:hover{color:var(--white);background:rgba(124,58,237,.12)}
-.nav-cv{margin-left:8px}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:6px}
 .hamburger span{display:block;width:22px;height:2px;background:var(--text-primary);border-radius:2px;transition:var(--transition)}
 .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
@@ -232,12 +231,6 @@ img{max-width:100%;display:block}
 .timeline-item li{font-size:.85rem;color:var(--text-secondary);margin-bottom:6px;list-style:disc}
 .timeline-item li::marker{color:var(--accent-bright)}
 
-/* CV SECTION */
-.cv-box{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:52px 40px;text-align:center;max-width:640px;margin:0 auto}
-.cv-box h2{font-size:1.5rem;margin-bottom:12px}
-.cv-box p{color:var(--text-secondary);margin-bottom:26px;font-size:.92rem}
-.cv-btn-group{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-
 /* CONTACT */
 .contact-grid{display:grid;grid-template-columns:1fr;gap:20px;max-width:640px;margin:0 auto}
 .contact-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;display:flex;align-items:center;gap:16px;transition:var(--transition)}
@@ -275,7 +268,6 @@ img{max-width:100%;display:block}
   .nav-links{position:fixed;top:64px;left:0;right:0;background:rgba(5,11,24,.98);backdrop-filter:blur(16px);flex-direction:column;padding:16px;gap:4px;border-bottom:1px solid var(--border);display:none}
   .nav-links.open{display:flex}
   .nav-link{width:100%;padding:12px 16px;border-radius:8px}
-  .nav-cv{margin:8px 0 0;width:100%;justify-content:center}
   .hamburger{display:flex}
 }
 </style>
@@ -290,11 +282,10 @@ img{max-width:100%;display:block}
       <li><a href="#projects" class="nav-link">Projects</a></li>
       <li><a href="#about" class="nav-link">About</a></li>
       <li><a href="#skills" class="nav-link">Skills</a></li>
-      <li><a href="#certifications" class="nav-link">Certs</a></li>
       <li><a href="#education" class="nav-link">Education</a></li>
+      <li><a href="#certifications" class="nav-link">Certs</a></li>
       <li><a href="#experience" class="nav-link">Experience</a></li>
       <li><a href="#contact" class="nav-link">Contact</a></li>
-      <li><a href="#cv" class="btn btn-primary nav-cv" style="padding:8px 18px;font-size:.78rem">CV</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
   </nav>
@@ -315,7 +306,6 @@ img{max-width:100%;display:block}
       <div class="hero-tags"><span class="hero-tags-prefix">I turn complex requirements into </span><span class="typing-text"></span></div>
       <div class="hero-buttons">
         <a href="#projects" class="btn btn-primary"><i class="fas fa-diagram-project"></i> View Projects</a>
-        <a href="assets/Sathsarani_Ranasingha.pdf" class="btn btn-outline" download><i class="fas fa-download"></i> Download CV</a>
         <a href="#contact" class="btn btn-ghost"><i class="fas fa-envelope"></i> Contact Me</a>
       </div>
       <div class="hero-socials">
@@ -445,7 +435,6 @@ img{max-width:100%;display:block}
           <div class="info-row"><span class="info-key"><i class="fas fa-user"></i> Name</span><span class="info-val">Dinu Sathsarani Ranasingha</span></div>
           <div class="info-row"><span class="info-key"><i class="fas fa-graduation-cap"></i> Degree</span><span class="info-val">BSc (Hons) Information Technology</span></div>
           <div class="info-row"><span class="info-key"><i class="fas fa-university"></i> University</span><span class="info-val">SLIIT</span></div>
-          <div class="info-row"><span class="info-key"><i class="fas fa-phone"></i> Phone</span><span class="info-val">+94 75 360 2626</span></div>
           <div class="info-row"><span class="info-key"><i class="fas fa-location-dot"></i> Location</span><span class="info-val">Gampaha, Sri Lanka</span></div>
           <div class="info-row"><span class="info-key"><i class="fas fa-envelope"></i> Email</span><span class="info-val"><a href="mailto:sathsaraniranasingha4@gmail.com">sathsaraniranasingha4@gmail.com</a></span></div>
           <div class="info-row"><span class="info-key"><i class="fas fa-briefcase"></i> Status</span><span class="info-val"><span class="status-open"><i class="fas fa-circle-check"></i> Open to Internships</span></span></div>
@@ -456,8 +445,6 @@ img{max-width:100%;display:block}
           <span class="interest-chip"><i class="fas fa-chart-line"></i> Data Analytics</span>
           <span class="interest-chip"><i class="fas fa-people-group"></i> Project Management</span>
         </div>
-
-        <a href="assets/Sathsarani_Ranasingha.pdf" class="btn btn-primary" download><i class="fas fa-download"></i> Download CV</a>
       </div>
     </div>
   </div>
@@ -526,8 +513,30 @@ img{max-width:100%;display:block}
   </div>
 </section>
 
+<!-- EDUCATION -->
+<section id="education" class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-label">Academic background</p>
+      <h2 class="section-title">Education</h2>
+    </div>
+    <div class="edu-grid">
+      <div class="edu-card reveal">
+        <p class="edu-year">2024 – Present</p>
+        <h3 class="edu-degree">BSc (Hons) in Information Technology, Specializing in Information Systems Engineering</h3>
+        <p class="edu-school">Sri Lanka Institute of Information Technology (SLIIT)</p>
+      </div>
+      <div class="edu-card reveal">
+        <p class="edu-year">Completed</p>
+        <h3 class="edu-degree">G.C.E. Advanced Level — Commerce Stream</h3>
+        <p class="edu-school">Vishaka Balika Vidyalaya</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CERTIFICATIONS -->
-<section id="certifications" class="section">
+<section id="certifications" class="section bg-alt">
   <div class="container">
     <div class="section-header reveal">
       <p class="section-label">Professional development</p>
@@ -559,28 +568,6 @@ img{max-width:100%;display:block}
         <div class="cert-info"><p class="cert-name">Customer Relationship Management (Basics)</p><p class="cert-issuer">Project Management Institute (PMI)</p><p class="cert-date">Jun 2026</p></div>
         <i class="fas fa-arrow-right cert-arrow"></i>
       </a>
-    </div>
-  </div>
-</section>
-
-<!-- EDUCATION -->
-<section id="education" class="section bg-alt">
-  <div class="container">
-    <div class="section-header reveal">
-      <p class="section-label">Academic background</p>
-      <h2 class="section-title">Education</h2>
-    </div>
-    <div class="edu-grid">
-      <div class="edu-card reveal">
-        <p class="edu-year">2024 – Present</p>
-        <h3 class="edu-degree">BSc (Hons) in Information Technology, Specializing in Information Systems Engineering</h3>
-        <p class="edu-school">Sri Lanka Institute of Information Technology (SLIIT)</p>
-      </div>
-      <div class="edu-card reveal">
-        <p class="edu-year">Completed</p>
-        <h3 class="edu-degree">G.C.E. Advanced Level — Commerce Stream</h3>
-        <p class="edu-school">Vishaka Balika Vidyalaya</p>
-      </div>
     </div>
   </div>
 </section>
@@ -620,21 +607,6 @@ img{max-width:100%;display:block}
   </div>
 </section>
 
-<!-- CV -->
-<section id="cv" class="section bg-alt">
-  <div class="container">
-    <div class="cv-box reveal">
-      <p class="section-label" style="margin-bottom:10px">My Resume</p>
-      <h2>View or Download My CV</h2>
-      <p>Get a complete overview of my education, experience, projects, and certifications in one document.</p>
-      <div class="cv-btn-group">
-        <a href="assets/Sathsarani_Ranasingha.pdf" target="_blank" class="btn btn-primary"><i class="fas fa-eye"></i> View CV Online</a>
-        <a href="assets/Sathsarani_Ranasingha.pdf" download="Dinu_Sathsarani_CV.pdf" class="btn btn-outline"><i class="fas fa-download"></i> Download CV (PDF)</a>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- CONTACT -->
 <section id="contact" class="section">
   <div class="container">
@@ -647,11 +619,6 @@ img{max-width:100%;display:block}
       <a href="mailto:sathsaraniranasingha4@gmail.com" class="contact-card reveal">
         <div class="contact-card-icon"><i class="fas fa-envelope"></i></div>
         <div class="contact-card-text"><span class="contact-card-label">Email</span><span class="contact-card-value">sathsaraniranasingha4@gmail.com</span></div>
-        <i class="fas fa-arrow-right contact-card-arrow"></i>
-      </a>
-      <a href="tel:+940753602626" class="contact-card reveal">
-        <div class="contact-card-icon"><i class="fas fa-phone"></i></div>
-        <div class="contact-card-text"><span class="contact-card-label">Phone</span><span class="contact-card-value">+94 75 360 2626</span></div>
         <i class="fas fa-arrow-right contact-card-arrow"></i>
       </a>
       <a href="http://www.linkedin.com/in/sathsarani-ranasingha" target="_blank" class="contact-card reveal">

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alex | Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="navbar">
+    <a class="logo" href="#home"><span>&lt;/&gt;</span> CodeCraft</a>
+    <nav>
+      <a class="active" href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#blog">Blog</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="hire-btn" href="#contact">Hire Me <span>↗</span></a>
+  </header>
+
+  <main>
+    <section class="hero section-wrap" id="home">
+      <div class="hero-copy">
+        <span class="eyebrow">I'M A WEB DEVELOPER</span>
+        <h1>Hi, I’m <span>Alex</span></h1>
+        <h2>I build things for the web.</h2>
+        <p>I'm a passionate web developer specializing in building exceptional digital experiences with modern technologies.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#projects">View My Work <span>↗</span></a>
+          <a class="button outline" href="#" download>Download CV <span>↓</span></a>
+        </div>
+        <div class="tech">
+          <h3>TECHNOLOGIES I WORK WITH</h3>
+          <div class="tech-icons">
+            <span class="html">5</span><span class="css">3</span><span class="js">JS</span>
+            <span class="ts">TS</span><span class="react">⚛</span><span class="node">⬡</span><span class="git">◆</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="portrait-circle"></div>
+        <img class="portrait" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=750&auto=format&fit=crop&q=85" alt="Developer portrait">
+        <div class="code-card">
+          <div class="code-top"><span>&lt;/&gt; Code</span><i></i></div>
+          <pre><span>const</span> developer = {
+  name: <b>'Alex'</b>,
+  skills: [<b>'HTML'</b>, <b>'CSS'</b>,
+    <b>'JavaScript'</b>, <b>'React'</b>],
+  passion: <b>'Building things
+    for the web'</b>
+};</pre>
+        </div>
+        <span class="dots"></span>
+        <span class="curved-arrow">↶</span>
+      </div>
+    </section>
+
+    <section class="about section-wrap" id="about">
+      <div class="about-copy">
+        <span class="eyebrow">ABOUT ME</span>
+        <h2>I'm passionate about<br>creating digital solutions</h2>
+        <p>With 4+ years of experience in web development, I help businesses and individuals bring their ideas to life through clean, efficient, and user-friendly code.</p>
+        <a class="button outline small" href="#contact">Learn More About Me　♙</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><span class="stat-icon">▣</span><div><strong>4+</strong><small>Years Experience</small></div></div>
+        <div class="stat"><span class="stat-icon">&lt;/&gt;</span><div><strong>50+</strong><small>Projects Completed</small></div></div>
+        <div class="stat"><span class="stat-icon">☺</span><div><strong>30+</strong><small>Happy Clients</small></div></div>
+        <div class="stat"><span class="stat-icon">♜</span><div><strong>100%</strong><small>Client Satisfaction</small></div></div>
+      </div>
+    </section>
+
+    <section class="skills section-wrap" id="skills">
+      <div class="section-heading"><span class="eyebrow">MY SKILLS</span><h2>Technologies I Master</h2><i></i></div>
+      <div class="skill-grid">
+        <div class="skill"><div><b>🟧</b> HTML <span>95%</span></div><div class="bar"><i style="width:95%"></i></div></div>
+        <div class="skill"><div><b>⚛</b> React.js <span>85%</span></div><div class="bar"><i style="width:85%"></i></div></div>
+        <div class="skill"><div><b>⬡</b> Node.js <span>80%</span></div><div class="bar"><i style="width:80%"></i></div></div>
+        <div class="skill"><div><b>🔷</b> CSS <span>90%</span></div><div class="bar"><i style="width:90%"></i></div></div>
+        <div class="skill"><div><b>Ｎ</b> Next.js <span>80%</span></div><div class="bar"><i style="width:80%"></i></div></div>
+        <div class="skill"><div><b>〰</b> Tailwind CSS <span>90%</span></div><div class="bar"><i style="width:90%"></i></div></div>
+        <div class="skill"><div><b>🟨</b> JavaScript <span>90%</span></div><div class="bar"><i style="width:90%"></i></div></div>
+        <div class="skill"><div><b>🔷</b> TypeScript <span>85%</span></div><div class="bar"><i style="width:85%"></i></div></div>
+        <div class="skill"><div><b>🔶</b> Git <span>85%</span></div><div class="bar"><i style="width:85%"></i></div></div>
+      </div>
+    </section>
+
+    <section class="projects section-wrap" id="projects">
+      <div class="section-heading"><span class="eyebrow">FEATURED PROJECTS</span><h2>Some of My Recent Work</h2><i></i></div>
+      <div class="project-grid">
+        <article class="project-card">
+          <img src="https://images.unsplash.com/photo-1557821552-17105176677c?w=800&auto=format&fit=crop&q=85" alt="E-commerce website preview">
+          <div class="project-info"><small>01</small><h3>E-Commerce Platform</h3><p>Full-stack e-commerce solution with modern UI/UX</p><a href="#">View Project　↗</a></div>
+        </article>
+        <article class="project-card">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=85" alt="Task management dashboard preview">
+          <div class="project-info"><small>02</small><h3>Task Management App</h3><p>Collaborative task management application</p><a href="#">View Project　↗</a></div>
+        </article>
+        <article class="project-card">
+          <img src="https://images.unsplash.com/photo-1642790106117-e829e14a795f?w=800&auto=format&fit=crop&q=85" alt="Analytics dashboard preview">
+          <div class="project-info"><small>03</small><h3>Crypto Dashboard</h3><p>Real-time cryptocurrency tracking dashboard</p><a href="#">View Project　↗</a></div>
+        </article>
+      </div>
+      <div class="dots-nav"><i class="selected"></i><i></i><i></i></div>
+    </section>
+
+    <section class="contact section-wrap" id="contact">
+      <div class="contact-copy"><span class="eyebrow">LET'S WORK TOGETHER</span><h2>Have a project in mind?</h2><p>I'm always open to discussing new projects and opportunities. Let's create something amazing together!</p><a class="button primary" href="mailto:hello@alexdev.com">Get In Touch　↗</a></div>
+      <blockquote><strong>“</strong><p>Alex is an exceptional developer who delivers high-quality work on time. His attention to detail and problem-solving skills are outstanding.</p><div class="reviewer"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80" alt="Sarah Johnson"><div><b>Sarah Johnson</b><small>CEO, TechStart</small></div></div></blockquote>
+      <div class="social"><span class="eyebrow">FOLLOW ME</span><div class="social-icons"><a href="#">◉</a><a href="#">in</a><a href="#">♥</a><a href="#">◎</a></div><p>✉　hello@alexdev.com</p><p>☎　+1 (555) 123-4567</p></div>
+    </section>
+  </main>
+  <footer class="section-wrap"><span>© 2024 Alex Develop. All rights reserved.</span><span>Made with <b>♥</b> by Alex</span></footer>
+</body>
+</html>
